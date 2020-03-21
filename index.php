@@ -85,6 +85,16 @@ $usuario->update('alunogomes', '55555');
 
 echo $usuario;*/
 
+$usuario = new Usuario();
+
+$usuario->loadById(48);
+
+$usuario->delete();
+
+echo $usuario;
+
+
+
 
 
 

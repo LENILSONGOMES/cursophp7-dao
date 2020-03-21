@@ -137,6 +137,21 @@
  		));
  	}
 
+ 	public function delete() {
+
+ 		$sql = new Mysql(); 
+
+ 		$sql->query('DELETE FROM tb_usuarios WHERE id_usuario = :ID', array(
+ 			':ID'=>$this->getIdusuario()
+ 		));
+
+ 		$this->setIdusuario(0);
+ 		$this->setDslogin('');
+ 		$this->setDsSenha('');
+ 		$this->setDtcadastro('2015-05-05');
+
+ 	}
+
  	public function __construct($usuario = '', $senha = '') {
 
  		$this->setDslogin($usuario);
