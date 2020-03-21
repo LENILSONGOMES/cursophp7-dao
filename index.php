@@ -17,12 +17,12 @@ echo json_encode($usuarios);
 
 //echo json_encode($usuarios);*/
 
-$sql = new Usuario();
+/*$sql = new Usuario();
 
 $sql->loadById(25);
 
 
-echo $sql;
+echo $sql;*/
 
 /*$idusuario =  $sql->getIdusuario(25);
 $dslogin = $sql->getDslogin(25);
@@ -30,5 +30,27 @@ $dslogin = $sql->getDslogin(25);
 if ($idusuario == 25) {
 	echo 'É o '.$dslogin;
 }*/
+
+
+//carrega uma lista de usuarios
+
+/*$lista = Usuario::getList();
+
+echo json_encode($lista);*/
+
+/*
+LISTA USUARIOS COM PARAMETROS
+$lista = Usuario::search('LENILSONG');
+
+echo json_encode($lista);*/
+
+
+//LISTA COM DOIS PARAMETROS
+$usuario = new Usuario();
+$usuario->login('GOMESLENILSON', '1234567');
+
+echo $usuario;
+
+
 
 ?>
