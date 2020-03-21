@@ -6,7 +6,7 @@
  	private $dslogin;
  	private $dssenha;
  	private $dtcadastro;
- 	private $conexao;
+
 
 
  	public function getIdusuario() {
@@ -53,13 +53,9 @@
 
  		if (count($result) > 0) {
 
- 			$row = $result[0];
-
  			//obter dados - atributos preenchidos
- 			$this->setIdusuario($row['id_usuario']);
- 			$this->setDslogin($row['dslogin']);
- 			$this->setDssenha($row['dssenha']);
- 			$this->setDtcadastro($row['dtcadastro']);
+ 			$this->setData($result[0]);
+ 
  		}
  	}
 
@@ -92,12 +88,60 @@
 
  			$row = $result[0];
 
+ 			$this->setData($result[0]);
+
  			//obter dados - atributos preenchidos
- 			$this->setIdusuario($row['id_usuario']);
- 			$this->setDslogin($row['dslogin']);
- 			$this->setDssenha($row['dssenha']);
- 			$this->setDtcadastro($row['dtcadastro']);
+
  		}
+
+ 	}
+
+ 	public function setData($data) {
+
+ 		 	$this->setIdusuario($data['id_usuario']);
+ 			$this->setDslogin($data['dslogin']);
+ 			$this->setDssenha($data['dssenha']);
+ 			$this->setDtcadastro($data['dtcadastro']);
+
+
+ 	}
+
+ 	public function insert() {
+
+ 		$sql = new Mysql();
+ 		$result = $sql->query('CALL sp_usuarios_insert (:LOGIN, :SENHA)', array(
+ 			':LOGIN'=>$this->getDslogin(),
+ 			':SENHA'=>$this->getDssenha()
+
+ 		));
+
+ 		if (count($result) > 0) {
+
+ 		$this->setData($result[0]);	
+
+ 		}
+
+ 	}
+
+ 	public function update($login, $senha) {
+
+ 		$this->setDslogin($login);
+ 		$this->setDssenha($senha);
+
+ 		$sql = new Mysql();
+
+ 		$sql->query('UPDATE tb_usuarios SET dslogin = :LOGIN, dssenha = :SENHA WHERE id_usuario = :ID', array(
+ 			':LOGIN'=>$this->getDslogin(),
+ 			':SENHA'=>$this->getDsSenha(),
+ 			':ID'=>$this->getIdusuario()
+ 		));
+ 	}
+
+ 	public function __construct($usuario = '', $senha = '') {
+
+ 		$this->setDslogin($usuario);
+ 		$this->setDsSenha($senha);
+
 
  	}
 

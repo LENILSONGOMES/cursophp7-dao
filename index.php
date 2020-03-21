@@ -46,10 +46,50 @@ echo json_encode($lista);*/
 
 
 //LISTA COM DOIS PARAMETROS
-$usuario = new Usuario();
+/*$usuario = new Usuario();
 $usuario->login('GOMESLENILSON', '1234567');
 
-echo $usuario;
+echo $usuario;*/
+
+//inserir dados
+//$aluno = new Usuario('gomes', '010203');
+
+/*$aluno->setDslogin('GOMES');
+$aluno->setDssenha('123456');
+
+$aluno->insert();
+
+echo $aluno;*/
+
+
+
+//carrega dados individualmente
+/*$resultado = new Usuario();
+
+$resultado->loadById(42);
+
+$usuario = $resultado->getDslogin();
+
+if ($usuario == 'GOMES2') {
+	echo 'Login válido';
+} else {
+	echo 'Login inválido';
+}*/
+
+//atualizar usuario
+/*$usuario = new Usuario();
+
+$usuario->loadById(46);
+
+$usuario->update('alunogomes', '55555');
+
+echo $usuario;*/
+
+
+
+
+
+
 
 
 
